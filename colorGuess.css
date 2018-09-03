@@ -1,0 +1,43 @@
+body {
+	background: black;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center; /* centers both banners*/
+}
+
+
+
+#topBanner {
+	background: darkblue;
+	color: white;
+}
+#lowerBanner {
+	background: white;
+	color: black;
+}
+
+
+
+
+/*need to fix. second banner doesnt look even*/
+.buttons {
+	width: 30%;
+	margin: 1.66%;
+}
+
+
+
+
+
+/*marks all 6 color boxes*/
+#container {
+	max-width: 600px; /*sets box container size*/
+	margin: auto; /*centers it*/
+}
+/*marks each box*/
+.box {
+	width: 30%; /*sets size box size, 30% of the container*/
+	padding-bottom: 30%; /*sets visible size ""         ""*/
+	float: left; /*stacks on same the line. 30%-30%-30% of 100%. leftover 10% on the right.*/
+	margin: 1.66%; /*tries to fill in the remaining 10%*/
+}
