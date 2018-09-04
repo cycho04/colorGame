@@ -1,23 +1,39 @@
 body {
-	background: black;
+	background: #222222;
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	text-align: center; /* centers both banners*/
+	margin: 0;
 }
 
-
-
-#topBanner {
-	background: darkblue;
+h1 {
+	background: steelblue;
 	color: white;
+	margin: 0;
+	text-transform: uppercase;
+	line-height: 1.1; /*brings the title closer together vertically*/
+	padding: 15px 0; /*gives the title room on the top and bottom*/
 }
+
+button {
+	border: none;
+	background: none; 
+	text-transform: uppercase;
+	height: 100%; /*centers the buttons vertically*/
+	font-weight: 700;
+	color: steelblue;
+	letter-spacing: 1px;
+	font-size: inherit;
+}
+
+#colorDisplay {
+	font-size: 175%;
+}
+
 #lowerBanner {
 	background: white;
-	color: black;
+	color: #222222;
 }
-
-
-
 
 /*need to fix. second banner doesnt look even*/
 .buttons {
@@ -25,19 +41,20 @@ body {
 	margin: 1.66%;
 }
 
-
-
-
-
-/*marks all 6 color boxes*/
+/*marks all 6 color boxes(the container)*/
 #container {
 	max-width: 600px; /*sets box container size*/
 	margin: auto; /*centers it*/
 }
+
 /*marks each box*/
 .box {
 	width: 30%; /*sets size box size, 30% of the container*/
 	padding-bottom: 30%; /*sets visible size ""         ""*/
 	float: left; /*stacks on same the line. 30%-30%-30% of 100%. leftover 10% on the right.*/
 	margin: 1.66%; /*tries to fill in the remaining 10%*/
+}
+
+.selected {
+	background: steelblue;
 }

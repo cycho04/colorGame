@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Guess the RGB</title>
 	<link rel="stylesheet" type="text/css" href="colorGuess.css">
-	
 </head>
 <body id="body">
 	<!--top banner-->
-	<div id="topBanner">
+	<!-- <div id="topBanner"> -->
 		<h1>
 			<div>The World's Most Exciting</div>
-			<div id="colorDisplay"></div>
+			<div id="colorDisplay"></div> <!--answer is in rgb format-->
 			<div>Guessing Game</div>
 		</h1>
-	</div>
+	<!-- </div> -->
 
 	<!--lower banner with buttons-->
 	<div id="lowerBanner">
@@ -21,7 +20,7 @@
 			<span><button id ="newGame" class="buttons">New Color</button></span> <!--need to fix, not even-->
 			<span id="tryAgain" class="buttons">Try Again</span>
 			<span class="buttons">
-				<button id="hard">Hard</button>
+				<button class="selected" id="hard">Hard</button>
 				<button id="easy">Easy</button>
 			</span>
 		</div>
@@ -36,7 +35,7 @@
 		<div class="box bot"></div>
 		<div class="box bot"></div>
 	</div>
-	
+
 
 <script type="text/javascript" src="colorGuess.js"></script>
 </body>

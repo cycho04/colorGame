@@ -7,35 +7,30 @@ var easy = document.getElementById("easy"); // easy button
 var hard = document.getElementById("hard"); // hard button
 var tryAgain = document.getElementById("tryAgain"); //try again 
 
+//used to disable certain buttons/functions when won.
+var gameOver = false;
 
 
 
-
-
+//----------------------------------------------------
 //Game initialization. randomizes colors and answer.
+//----------------------------------------------------
 
-//assigns a random color to each box
-for (i = 0; i < boxes.length; i++) {
-	boxes[i].style.backgroundColor = randomize(255);
-}
-
-//assigns one of the randomly generated color boxes to the title as the answer
-//toUpperCase used to display RGB not rgb
-title.textContent = boxes[choose(5)].style.backgroundColor.toUpperCase(); // use style.backgroundColor to access the rgb. else it returns the whole div
+//assigns colors,answer, and # of boxes based on difficulty. 3 = easy 6 = hard
+assign(6);
 
 //hides try again message
 tryAgain.style.visibility = "hidden";
 
 
-//used to disable certain buttons/functions when won.
-gameOver = false;
 
 
-
-
+//----------------------------------------------
 //Event Listeners: click
+//-----------------------------------------------
 
 //clicking boxes
+
 boxes[0].addEventListener("click", function() {
 	clicked(0);
 });
@@ -55,67 +50,92 @@ boxes[5].addEventListener("click", function() {
 	clicked(5);
 });
 
+
 // New game button
 newGame.addEventListener("click", function(){
 	location.reload(); //reloads the page
 });
 
+
 // Easy button
 easy.addEventListener("click", function(){
+	//check if game is over, then player must press new game to continue
 	if (gameOver == false) {
+		//hides bottom 3 boxes
 		for (i = 0; i < bot.length; i++) {
 			bot[i].style.visibility = "hidden";
 		}
+		//reassigns color and answer in case answer was bot 3 boxes.
+		assign(3);
+		easy.classList.add("selected");
+		hard.classList.remove("selected");
 	}
 });
+
 
 // Hard Button(default mode)
 hard.addEventListener("click", function(){
 	if (gameOver == false) {
+		//reveals all 6 boxes in case coming from easy mode
 		for (i = 0; i < bot.length; i++) {
 			bot[i].style.visibility = "visible";
 		}
+		assign(6);
+		hard.classList.add("selected");
+		easy.classList.remove("selected");
 	}
 });
 
 
 
 
-
-
-
-
+//---------------------------------------------------------------
 //Functions
+//---------------------------------------------------------------
+
+//assigns a random color to each box and one of those for the answer.
+function assign(n) {
+	// n = 3 = easy. n=6=hard
+	for (i = 0; i < n; i++) {
+		boxes[i].style.backgroundColor = randomize(255);
+	}
+	//assigns one of the randomly generated color boxes to the title as the answer
+	title.textContent = boxes[choose(n-1)].style.backgroundColor;
+}
+
 
 // EVENT LISTENER~~~~~~When a box is clicked...changes all color boxes and banner
 // n = the position of the current boxes[n]
 function clicked(n) {
-	//If it is the answer
+	//if it is the answer...
 	//toUpperCase used to comply with title RGB not rgb
-	if (boxes[n].style.backgroundColor.toUpperCase() === title.textContent) {
+	if (boxes[n].style.backgroundColor === title.textContent) {
 		// game over. hard/easy buttons shouldnt work anymore
 		gameOver = true;
 		//try again -> thats correct
 		tryAgain.textContent = "That's Correct!"
+		tryAgain.style.visibility = "visible";
 		// turns banner background into the answer color
-		h1.style.backgroundColor = boxes[n].style.backgroundColor.toUpperCase();
+		h1.style.backgroundColor = boxes[n].style.backgroundColor;
+		//bcuz of correct answer, change all boxes to answer color
 		for (i = 0; i < boxes.length; i++) {
-			//bcuz of correct answer, change all boxes to answer color
 			boxes[i].style.backgroundColor = title.textContent;
 		}
 	}
-	// if not the answer
+	// if not the answer...
 	else {
 		tryAgain.style.visibility = "visible";
-		//change box to black
-		boxes[n].style.backgroundColor = "black";
+		//wrong answer clicked. change box to black
+		boxes[n].style.backgroundColor = "#222222";
 	}
 }
 
-//Returns a random whole number between 0 and max
+
+//Returns a random whole number between 0 and max. used to choose answer
 function choose(max) {
 	return Math.floor(Math.random() * max);
 };
+
 
 //Returns the rgb format using choose(max). max is used at 255 for rgb.
 function randomize(max) {
