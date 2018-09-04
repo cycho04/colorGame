@@ -26,6 +26,12 @@ button {
 	font-size: inherit;
 }
 
+/*Fixed Static Spacing for Try again.*/
+#tryAgain {
+	width: 30%;
+	display: inline-block;
+}
+
 #colorDisplay {
 	font-size: 175%;
 }
@@ -35,7 +41,7 @@ button {
 	color: #222222;
 }
 
-/*need to fix. second banner doesnt look even*/
+
 .buttons {
 	width: 30%;
 	margin: 1.66%;
@@ -55,6 +61,8 @@ button {
 	margin: 1.66%; /*tries to fill in the remaining 10%*/
 }
 
+/*fixed font not showing when in mode. now white.*/
 .selected {
 	background: steelblue;
+	color: white;
 }

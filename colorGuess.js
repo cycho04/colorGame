@@ -9,6 +9,8 @@ var tryAgain = document.getElementById("tryAgain"); //try again
 
 //used to disable certain buttons/functions when won.
 var gameOver = false;
+//used to check which mode. (for buttons and which stays highlighted)
+var mode = "hard";
 
 
 
@@ -59,6 +61,7 @@ newGame.addEventListener("click", function(){
 
 // Easy button
 easy.addEventListener("click", function(){
+	mode = "easy";
 	//check if game is over, then player must press new game to continue
 	if (gameOver == false) {
 		//hides bottom 3 boxes
@@ -75,6 +78,7 @@ easy.addEventListener("click", function(){
 
 // Hard Button(default mode)
 hard.addEventListener("click", function(){
+	mode = "hard";
 	if (gameOver == false) {
 		//reveals all 6 boxes in case coming from easy mode
 		for (i = 0; i < bot.length; i++) {
@@ -85,6 +89,37 @@ hard.addEventListener("click", function(){
 		easy.classList.remove("selected");
 	}
 });
+
+
+//Hovering effects
+easy.addEventListener("mouseover", function(){
+	easy.classList.add("selected");
+});
+easy.addEventListener("mouseout", function(){
+	// checks which mode. If easy, then dont remove highlight.
+	if (mode == "hard") {
+		easy.classList.remove("selected");
+	}	
+})
+hard.addEventListener("mouseover", function(){
+	hard.classList.add("selected");
+});
+hard.addEventListener("mouseout", function(){
+	// checks which mode. If hard, then dont remove highlight.
+	if (mode == "easy") {
+		hard.classList.remove("selected");
+	}
+});
+newGame.addEventListener("mouseover", function(){
+	newGame.classList.add("selected");
+});
+newGame.addEventListener("mouseout", function(){
+	newGame.classList.remove("selected");
+});
+
+
+
+
 
 
 
