@@ -73,6 +73,9 @@ easy.addEventListener("click", function(){
 		easy.classList.add("selected");
 		hard.classList.remove("selected");
 	}
+	else {
+		hard.classList.remove("selected"); //added to fix the button bug where
+	}									   // when gameover, both buttons were both highlighted not just one
 });
 
 
@@ -87,6 +90,9 @@ hard.addEventListener("click", function(){
 		assign(6);
 		hard.classList.add("selected");
 		easy.classList.remove("selected");
+	}
+	else {
+		easy.classList.remove("selected"); //see easy^
 	}
 });
 
